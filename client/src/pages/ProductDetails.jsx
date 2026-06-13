@@ -24,6 +24,27 @@ function ProductDetails() {
 
   }, [id]);
 
+  const addToCart = () => {
+
+    let cart =
+      JSON.parse(
+        localStorage.getItem("cart")
+      ) || [];
+
+    cart.push({
+      ...product,
+      quantity: 1
+    });
+
+    localStorage.setItem(
+      "cart",
+      JSON.stringify(cart)
+    );
+
+    alert("Added To Cart");
+
+  };
+
   if (!product) {
 
     return <h2>Loading...</h2>;
@@ -32,17 +53,32 @@ function ProductDetails() {
 
   return (
 
-    <div className="container mt-5">
+    <div
+      className="container-fluid py-5"
+      style={{
+        backgroundColor: "#000",
+        minHeight: "100vh",
+        color: "white"
+      }}
+    >
 
-      <div className="card p-4">
+      <div
+        className="card p-4 mx-auto"
+        style={{
+          maxWidth: "900px"
+        }}
+      >
 
         <img
           src={product.mainImg}
           alt={product.title}
-          height="400"
+          style={{
+            height: "400px",
+            objectFit: "cover"
+          }}
         />
 
-        <h2 className="mt-3">
+        <h2 className="mt-4">
           {product.title}
         </h2>
 
@@ -53,6 +89,24 @@ function ProductDetails() {
         <h3>
           ₹{product.price}
         </h3>
+
+        <div className="mt-3">
+
+          <button
+            className="btn btn-success me-2"
+            onClick={addToCart}
+          >
+            Add To Cart
+          </button>
+
+          <a
+            href="/cart"
+            className="btn btn-warning"
+          >
+            Go To Cart
+          </a>
+
+        </div>
 
       </div>
 

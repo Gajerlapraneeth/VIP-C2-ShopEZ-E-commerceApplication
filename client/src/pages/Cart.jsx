@@ -71,7 +71,12 @@ function Cart() {
 
   return (
 
-    <div className="container mt-5">
+    <div className="container-fluid mt-5"
+  style={{
+    backgroundColor: "#000",
+    minHeight: "100vh",
+    color: "white"
+  }} >
 
       <h2>My Cart</h2>
 

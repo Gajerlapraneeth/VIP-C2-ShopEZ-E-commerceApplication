@@ -43,7 +43,7 @@ function Products() {
 
   return (
 
-    <div className="container mt-4">
+    <div className="container-fluid" style={{ background: "#000000"}}>
 
       <h2 className="mb-4">
         All Products

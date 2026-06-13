@@ -13,7 +13,12 @@ function Profile() {
   const user = JSON.parse(storedUser);
 
   return (
-    <div className="container mt-5">
+    <div className="container-fluid"
+  style={{
+    backgroundColor: "#000",
+    minHeight: "100vh",
+    color: "white"
+  }} >
 
       <div className="card p-4">
 

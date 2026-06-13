@@ -18,7 +18,7 @@ function Navbar() {
         background: "linear-gradient(90deg,#0F172A,#1E3A8A,#2563EB)"
       }}
     >
-      <div className="container">
+      <div className="container-fluid">
         <Link className="navbar-brand fw-bold text-white" to="/">
           ShopEZ
         </Link>

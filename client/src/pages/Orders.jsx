@@ -4,7 +4,7 @@ function Orders() {
     JSON.parse(localStorage.getItem("orders")) || [];
 
   return (
-    <div className="container mt-5">
+    <div className="container-fluid" style={{ background: "#000000"}}>
 
       <h2>My Orders</h2>
 

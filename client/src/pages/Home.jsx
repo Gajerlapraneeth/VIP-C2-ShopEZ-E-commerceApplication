@@ -15,8 +15,8 @@ function Home() {
   }, []);
 
   return (
-    <div style={{ background: "#F8FAFC", minHeight: "100vh" }}>
-      <div className="container py-5">
+    <div style={{ background: "#000000", minHeight: "100vh" }}>
+      <div className="container-fluid">
 
         <div
           className="text-white p-5 rounded-4 text-center mb-5"
