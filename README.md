@@ -1,1 +1,1 @@
-# VIP-C2-ShopEZ-E-commerceApplication
+ShopEZ-E-commerceApplication
