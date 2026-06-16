@@ -3,56 +3,55 @@ import { useParams } from "react-router-dom";
 import API from "../services/api";
 
 function ProductDetails() {
-
   const { id } = useParams();
-
-  const [product, setProduct] =
-    useState(null);
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
-
     const fetchProduct = async () => {
-
-      const res =
-        await API.get(`/products/${id}`);
-
+      const res = await API.get(`/products/${id}`);
       setProduct(res.data);
-
     };
 
     fetchProduct();
-
   }, [id]);
 
   const addToCart = () => {
+    const token = localStorage.getItem("token");
 
-    let cart =
-      JSON.parse(
-        localStorage.getItem("cart")
-      ) || [];
+    if (!token) {
+      alert("Please login first to add products to cart");
+      window.location.href = "/login";
+      return;
+    }
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     cart.push({
       ...product,
       quantity: 1
     });
 
-    localStorage.setItem(
-      "cart",
-      JSON.stringify(cart)
-    );
+    localStorage.setItem("cart", JSON.stringify(cart));
 
     alert("Added To Cart");
-
   };
 
   if (!product) {
-
-    return <h2>Loading...</h2>;
-
+    return (
+      <div
+        className="container-fluid py-5"
+        style={{
+          backgroundColor: "#000",
+          minHeight: "100vh",
+          color: "white"
+        }}
+      >
+        <h2>Loading...</h2>
+      </div>
+    );
   }
 
   return (
-
     <div
       className="container-fluid py-5"
       style={{
@@ -61,14 +60,12 @@ function ProductDetails() {
         color: "white"
       }}
     >
-
       <div
         className="card p-4 mx-auto"
         style={{
           maxWidth: "900px"
         }}
       >
-
         <img
           src={product.mainImg}
           alt={product.title}
@@ -78,42 +75,22 @@ function ProductDetails() {
           }}
         />
 
-        <h2 className="mt-4">
-          {product.title}
-        </h2>
-
-        <p>
-          {product.description}
-        </p>
-
-        <h3>
-          ₹{product.price}
-        </h3>
+        <h2 className="mt-4">{product.title}</h2>
+        <p>{product.description}</p>
+        <h3>₹{product.price}</h3>
 
         <div className="mt-3">
-
-          <button
-            className="btn btn-success me-2"
-            onClick={addToCart}
-          >
+          <button className="btn btn-success me-2" onClick={addToCart}>
             Add To Cart
           </button>
 
-          <a
-            href="/cart"
-            className="btn btn-warning"
-          >
+          <a href="/cart" className="btn btn-warning">
             Go To Cart
           </a>
-
         </div>
-
       </div>
-
     </div>
-
   );
-
 }
 
 export default ProductDetails;
