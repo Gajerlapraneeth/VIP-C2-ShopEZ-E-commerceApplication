@@ -2,11 +2,6 @@
 
 ShopEZ is a full-stack MERN e-commerce web application developed using React.js, Node.js, Express.js, and MongoDB. The project allows users to browse products, view product details, add products to cart, manage quantity, checkout with GST and delivery charges, and place orders. It also includes an admin dashboard for product management.
 
-## Demo Links
-
-Live Website: Add your deployed link here
-Demo Video: Add your demo video link here
-GitHub Repository: Add your GitHub repository link here
 
 ## Project Overview
 
